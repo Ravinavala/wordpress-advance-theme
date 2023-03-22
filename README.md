@@ -1,1 +1,1 @@
-# wordpress-advance-theme
+# Wordpress theme
