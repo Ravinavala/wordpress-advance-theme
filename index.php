@@ -4,22 +4,10 @@
  *
  * @package Advancetheme
  */
+get_header();
 ?>
-<!doctype html>
-<html lang="en">
+<div class="content">
+    Content
+</div>
 
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-widht,initial-scale=1" />
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Wordpress theme </title>
-</head>
-
-<body>
-    Hello
-</body>
-
-</html>
+<?php get_footer();
