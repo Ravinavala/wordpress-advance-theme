@@ -4,6 +4,12 @@
  * Theme Functions.
  * @package Advacnetheme
  */
+if ( !defined( 'ADVANCE_THEME_DIR_PATH' )) {
+    define( 'ADVANCE_THEME_DIR_PATH' , untrailingslashit(get_template_directory() ) );
+}
+
+require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/autoloader.php';
+
 function advance_theme_enqueue_script() {
 
     //register style
