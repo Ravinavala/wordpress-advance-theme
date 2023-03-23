@@ -3,7 +3,7 @@
 /**
  * Autoloader file for theme.
  *
- * @package Aquila
+ * @package Advancetheme
  */
 
 namespace ADVANCE_THEME\Inc\Helpers;
@@ -70,7 +70,7 @@ function autoloader($resource = '') {
                 break;
         }
 
-        $resource_path = sprintf('%s/inc/%s/%s.php', untrailingslashit(AQUILA_DIR_PATH), $directory, $file_name);
+        $resource_path = sprintf('%s/inc/%s/%s.php', untrailingslashit(ADVANCE_THEME_DIR_PATH), $directory, $file_name);
     }
 
     /**
