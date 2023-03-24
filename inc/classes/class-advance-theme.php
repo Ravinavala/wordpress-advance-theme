@@ -17,7 +17,7 @@ class ADVANCE_THEME {
     protected function __construct() {
 
         // load class.
-        
+
         Assets::get_instance();
 
         $this->setup_hooks();
@@ -55,6 +55,16 @@ class ADVANCE_THEME {
                 ]
         );
 
+        $args = array(
+            'default-color' => '000000',
+            'default-image' => '',
+            'default-repeat' => 'no-repeat'
+        );
+
+        add_theme_support('custom-background', $args);
+
+        add_theme_support('post-thumbnails');
+
         add_theme_support('customize-selective-refresh-widgets');
 
         // Add default posts and comments RSS feed links to head.
@@ -77,17 +87,19 @@ class ADVANCE_THEME {
                 ]
         );
 
-        /**
-         * It allows you to link a custom stylesheet file to the TinyMCE editor within the post edit screen.
-         *
-         * Since we are not passing any parameter to the function,
-         * it will by default, link the editor-style.css file located directly under the current theme directory.
-         * You can can add 'editor-style.css' if you like to support TinyMCE editor styles.
-         *
-         * @see add_editor_style(
-         * @link https://developer.wordpress.org/reference/functions/add_editor_style/
-         */
         add_editor_style();
+
+        add_theme_support('block-style-editor');
+        //Add option to add wide and full width alignment for gutenber blocks like image block 
+        add_theme_support('align-wide');
+
+        //Define content width
+
+        global $content_width;
+        if (!isset($content_width)) {
+            //It will set maximum allowed width for any content in theme like oembed and images
+            $content_width = 1240;
+        }
     }
 
 }

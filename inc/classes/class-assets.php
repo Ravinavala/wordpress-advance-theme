@@ -15,7 +15,6 @@ class Assets {
 
     protected function __construct() {
         // load class.
-        echo 'caaaa';
         $this->setup_hooks();
     }
 
