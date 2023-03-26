@@ -17,13 +17,33 @@ get_header();
                             <?php single_post_title(); ?> 
                         </h1>
                     </header>
-                <?php } 
-                while (have_posts()) : the_post();
+                <?php } ?>
 
-                    get_template_part('template-parts/content');
+                <div class="row">
+                    <?php
+                    $index = 0;
+                    $no_of_columns = 3;
 
-                endwhile;
-                ?>
+                    while (have_posts()) : the_post();
+
+                        if (0 === $index % $no_of_columns) {
+                            ?>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <?php
+                            }
+                            get_template_part('template-parts/content');
+                            $index++;
+
+                            if (0 !== $index && 0 === $index % $no_of_columns) {
+                                ?>
+                            </div>
+                            <?php
+                        }
+
+                    endwhile;
+                    ?>
+                </div>
+
             </div>
             <?php
         endif;
