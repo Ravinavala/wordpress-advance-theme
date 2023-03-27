@@ -66,6 +66,9 @@ class ADVANCE_THEME {
 
         add_theme_support('post-thumbnails');
 
+        add_image_size('featured-custom-thumbnail', 360, 195, true);
+        
+        //Register image size
         add_theme_support('customize-selective-refresh-widgets');
 
         // Add default posts and comments RSS feed links to head.
@@ -101,6 +104,7 @@ class ADVANCE_THEME {
             //It will set maximum allowed width for any content in theme like oembed and images
             $content_width = 1240;
         }
+        
     }
 
 }

@@ -7,6 +7,6 @@
 ?>
 
 <section class="entry-content">
-    
+   
 </section>
 
