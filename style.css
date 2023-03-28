@@ -19,3 +19,9 @@ img {
     width: 100%;
     height: auto;
 }
+.updated:not(publish) {
+    display: none;
+}
+.nav-item:hover .dropdown-menu:not(.show){
+    display: block;
+}
