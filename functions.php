@@ -14,8 +14,10 @@ if (!defined('ADVANCE_THEME_DIR_URI')) {
 
 require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/autoloader.php';
 
+require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/template-tag.php';
+
 function advance_theme_instance() {
-    //this will instantiate class 
+    //this will instantiate class using namespace and your main class name
     \ADVANCE_THEME\Inc\ADVANCE_THEME::get_instance();
 }
 
