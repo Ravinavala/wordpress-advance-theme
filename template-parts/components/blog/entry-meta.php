@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="entry-meta">
-    
+<section class="entry-meta mb-3">
+   
 </section>
 
