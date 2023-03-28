@@ -6,7 +6,8 @@
  */
 ?>
 
-<section class="entry-meta">
-    
+<section class="entry-meta mb-3">
+    <?php advance_theme_posted_on(); ?>
+    <?php advance_theme_posted_by(); ?>
 </section>
 
