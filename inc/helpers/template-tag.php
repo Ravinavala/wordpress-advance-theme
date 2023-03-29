@@ -60,7 +60,6 @@ function advance_theme_posted_by() {
 }
 
 function advance_theme_the_excerpt($trim_char_count = 0) {
-    echo 'aa ' . $trim_char_count . "</br>";
     if ( ! has_excerpt() || 0 === $trim_char_count ) {
         the_excerpt();
         return;
@@ -72,4 +71,14 @@ function advance_theme_the_excerpt($trim_char_count = 0) {
     $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
     
     echo $excerpt . '[...]';
+}
+
+function advance_theme_read_more($read_more = ""){
+    if(!is_single()) {
+        $read_more = sprintf('<button class="mt-4 btn btn-info"> <a href="%1$s" class="atheme-read-more text-white">%2$s</a> </button>',
+        get_permalink(get_the_ID()),
+        __('Read More', 'advance-theme'),
+        );
+    }
+    return $read_more;
 }

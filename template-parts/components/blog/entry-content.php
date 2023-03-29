@@ -21,6 +21,7 @@
         );
    } else { 
        advance_theme_the_excerpt(25);
+       echo advance_theme_read_more();
    } ?>
 </section>
 
