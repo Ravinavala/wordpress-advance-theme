@@ -56,10 +56,8 @@ function advance_theme_posted_by() {
             esc_html_x(' by %s', 'post author', 'advance-theme'),
             '<span class="author vcard"><a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
     );
-
     echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
-
 
 function advance_theme_the_excerpt($trim_char_count = 0) {
     echo 'aa ' . $trim_char_count . "</br>";
@@ -67,10 +65,10 @@ function advance_theme_the_excerpt($trim_char_count = 0) {
         the_excerpt();
         return;
     }
-    
-    
+   
     $excerpt = wp_strip_all_tags(get_the_excerpt());
     $excerpt = substr($excerpt, 0, $trim_char_count);
+    //Trucate character after space to avoid work break
     $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
     
     echo $excerpt . '[...]';
