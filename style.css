@@ -19,6 +19,9 @@ img {
     width: 100%;
     height: auto;
 }
+img.custom-logo {
+    height: 150px;
+}
 .updated:not(publish) {
     display: none;
 }
