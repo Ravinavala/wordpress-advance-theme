@@ -1,4 +1,3 @@
-// main.js
 /****Clock*****/
 (function ($) {
     class Clock {
