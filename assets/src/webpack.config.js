@@ -1,5 +1,7 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin ');
+
+//extract css in seperate files
+const c = require('mini-css-extract-plugin ');
 
 //Removed unused webpack assets after every build
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -7,7 +9,6 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const JS_DIR = path.resolve(__dirname, '/src/js');
 const IMG_DIR = path.resolve(__dirname, '/src/img');
 const BUILD_DIR = path.resolve(__dirname, 'build');
-
 
 const entry = {
     main: JS_DIR + '/main.js',
@@ -52,22 +53,24 @@ const rules = [
 ]
 
 const plugins = (argv) => [
-
-        new CleanWebpackPlugin({
-            cleanStaleWebpackAssets: ('production' === argv.mode) // Automatically remove all unused webpack assets on rebuild, when set to true in production. ( https://www.npmjs.com/package/clean-webpack-plugin#options-and-defaults-optional )
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
-        }),
-    ]
+    new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: ('production' === argv.mode) // Automatically remove all unused webpack assets on rebuild, when set to true in production. ( https://www.npmjs.com/package/clean-webpack-plugin#options-and-defaults-optional )
+    }),
+    new MiniCssExtractPlugin({
+        filename: 'css/[name].css'
+    }),
+]
 
 module.exports = (env, argv) => ({
-        entry: entry,
-        output: output,
-        devtool: 'source-mapS',
-        module: {
-            rules: rules,
-        },
-        plugins: plugins(argv),
+    entry: entry,
+    output: output,
+    devtool: 'source-mapS',
+    module: {
+        rules: rules,
+    },
+    plugins: plugins(argv),
+    external: {
+        jquery: jQuery
+    }
 
-    })
+})
