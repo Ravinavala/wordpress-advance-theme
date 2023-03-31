@@ -1,24 +1,26 @@
 const path = require('path');
-
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 //extract css in seperate files
-const c = require('mini-css-extract-plugin ');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //Removed unused webpack assets after every build
+const cssnano = require('cssnano'); // https://cssnano.co/
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const JS_DIR = path.resolve(__dirname, '/src/js');
-const IMG_DIR = path.resolve(__dirname, '/src/img');
+// JS Directory path.
+const JS_DIR = path.resolve(__dirname, 'src/js');
+const IMG_DIR = path.resolve(__dirname, 'src/img');
 const BUILD_DIR = path.resolve(__dirname, 'build');
 
 const entry = {
     main: JS_DIR + '/main.js',
-    single: JS_DIR + '/single.js'
-}
+    single: JS_DIR + '/single.js',
+};
 
-const outout = {
+const output = {
     path: BUILD_DIR,
     filename: 'js/[name].js'
-}
+};
 
 const rules = [
     {
@@ -56,6 +58,7 @@ const plugins = (argv) => [
     new CleanWebpackPlugin({
         cleanStaleWebpackAssets: ('production' === argv.mode) // Automatically remove all unused webpack assets on rebuild, when set to true in production. ( https://www.npmjs.com/package/clean-webpack-plugin#options-and-defaults-optional )
     }),
+    
     new MiniCssExtractPlugin({
         filename: 'css/[name].css'
     }),
@@ -68,9 +71,21 @@ module.exports = (env, argv) => ({
     module: {
         rules: rules,
     },
-    plugins: plugins(argv),
-    external: {
-        jquery: jQuery
-    }
+    optimization: {
+        minimizer: [
+            new OptimizeCssAssetsPlugin({
+                cssProcessor: cssnano
+            }),
 
+            new UglifyJsPlugin({
+                cache: false,
+                parallel: true,
+                sourceMap: false
+            })
+        ]
+    },
+    plugins: plugins(argv),
+    externals: {
+        jquery: 'jQuery'
+    }
 })
