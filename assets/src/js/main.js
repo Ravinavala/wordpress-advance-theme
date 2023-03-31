@@ -1,4 +1,7 @@
-// main.js
-import "./clock";
+import './clock';
 
-import "../img/table-lamp.jpg";
+// Styles
+import '../sass/main.scss';
+
+// Images.
+import '../img/table-lamp.jpg';
