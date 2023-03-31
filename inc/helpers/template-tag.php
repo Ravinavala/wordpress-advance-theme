@@ -53,8 +53,8 @@ function advance_theme_posted_on() {
 
 function advance_theme_posted_by() {
     $byline = sprintf(
-            esc_html_x(' by %s', 'post author', 'advance-theme'),
-            '<span class="author vcard"><a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
+        esc_html_x(' by %s', 'post author', 'advance-theme'),
+        '<span class="author vcard"><a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
     );
     echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
@@ -75,7 +75,7 @@ function advance_theme_the_excerpt($trim_char_count = 0) {
 
 function advance_theme_read_more($read_more = ""){
     if(!is_single()) {
-        $read_more = sprintf('<button class="mt-4 btn btn-info"> <a href="%1$s" class="atheme-read-more text-white">%2$s</a> </button>',
+        $read_more = sprintf('<a href="%1$s" class="atheme-read-more text-white"><button class="mt-4 btn btn-info">%2$s</button></a>',
         get_permalink(get_the_ID()),
         __('Read More', 'advance-theme'),
         );
