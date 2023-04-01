@@ -17,19 +17,16 @@ class ADVANCE_THEME {
     protected function __construct() {
 
         // load class.
-
         Assets::get_instance();
         Menus::get_instance();
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
         Clock_Widget::get_instance();
         Block_Patterns::get_instance();
-
         $this->setup_hooks();
     }
 
     protected function setup_hooks() {
-
         /**
          * Actions.
          */
@@ -42,8 +39,7 @@ class ADVANCE_THEME {
      * @return void
      */
     public function setup_theme() {
-
-
+        
         add_theme_support('title-tag');
 
         add_theme_support(
@@ -101,6 +97,9 @@ class ADVANCE_THEME {
         //Add option to add wide and full width alignment for gutenber blocks like image block 
         add_theme_support('align-wide');
         
+        //Remove core block patterns
+        remove_theme_support('core-block-editor');
+        
         //Define content width
 
         global $content_width;
@@ -108,7 +107,5 @@ class ADVANCE_THEME {
             //It will set maximum allowed width for any content in theme like oembed and images
             $content_width = 1240;
         }
-        
     }
-
 }
