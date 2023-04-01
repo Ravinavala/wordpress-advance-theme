@@ -23,6 +23,7 @@ class ADVANCE_THEME {
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
         Clock_Widget::get_instance();
+        Block_Patterns::get_instance();
 
         $this->setup_hooks();
     }
@@ -99,7 +100,7 @@ class ADVANCE_THEME {
         add_theme_support('block-style-editor');
         //Add option to add wide and full width alignment for gutenber blocks like image block 
         add_theme_support('align-wide');
-
+        
         //Define content width
 
         global $content_width;

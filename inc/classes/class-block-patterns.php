@@ -1,15 +1,38 @@
 <?php
+
 /**
- * Register Register meta boxes 
+ * Register Block Pattern  
  * 
- * @package Advancetheme
+ * @packagep_hooks();
+  }
+
+  public function setup_hooks() {
+  //Setup hooks
+  add_action('add_meta_boxes', array($this, 'register_custom_meta_boxes'));
+  add_action('save_post', array($this, 'save_post_meta'));
+  }
+
+  public function register_custom_meta_boxes($post) {
+  $screens = array('post');
+  foreach ($screens as $screen) {
+  add_meta_box(
+  'hide-page-title',
+  __('Hide page title', 'advance-theme'),
+  array($this, 'render_custom_meta_box_html'),
+  $screen,
+  'side'
+  );
+  }
+  }
+
+  Advancetheme
  */
 
 namespace ADVANCE_THEME\Inc;
 
 use ADVANCE_THEME\Inc\Traits\Singleton;
 
-class Meta_Boxes {
+class Block_Patterns {
 
     use Singleton;
 
@@ -20,69 +43,36 @@ class Meta_Boxes {
 
     public function setup_hooks() {
         //Setup hooks
-        add_action('add_meta_boxes', array($this, 'register_custom_meta_boxes'));
-        add_action('save_post', array($this, 'save_post_meta'));
+        add_action('init', array($this, 'register_block_pattern'));
+        add_action('init', array($this, 'get_pattern_content'));
     }
 
-    public function register_custom_meta_boxes($post) {
-        $screens = array('post');
-        foreach ($screens as $screen) {
-            add_meta_box(
-                    'hide-page-title',
-                    __('Hide page title', 'advance-theme'),
-                    array($this, 'render_custom_meta_box_html'),
-                    $screen,
-                    'side'
+    public function register_block_pattern() {
+        if (function_exists('register_block_pattern')) {
+            $cover_content = $this->get_pattern_content('template-parts/patterns/cover');
+
+            register_block_pattern(
+                    'advance-theme/cover',
+                    [
+                        'title' => __('Advance Theme Cover Block', 'advance-theme'),
+                        'description' => __('Advance theme cover block with image and text', 'advacne-theme'),
+                        'content' => $cover_content
+                    ]
             );
         }
     }
 
-    public function render_custom_meta_box_html($post) {
-        $selection = get_post_meta($post->ID, '_hide_page_title', true);
-        wp_nonce_field(plugin_basename(__FILE__), 'hide_title_meta_box_nonce');
-        ?>
-        <label for="advancetheme-field"><?php esc_html_e('Hide the page title', 'advance-theme'); ?></label>
-        <select name="advacnetheme_hide_title_field" id="advance-theme-field" class="post_meta">
-            <option value=""><?php esc_html_e('Select', 'advance-theme'); ?></option>
-            <option value="yes" <?php selected($selection, 'yes'); ?>>
-                <?php esc_html_e('Yes', 'advance-theme'); ?>
-            </option>
-            <option value="no" <?php selected($selection, 'no'); ?>>
-                <?php esc_html_e('No', 'advance-theme'); ?>
-            </option>
-        </select>
-        <?php
-    }
+    public function get_pattern_content($template_path) {
 
-    public function save_post_meta($post_id) {
-        
-        if (!current_user_can('edit_post', $post_id)) {
-            return;
-        }
+        ob_start();
 
-        /**
-         * Check if the nonce value we received is the same we created.
-         */
-        if (!isset($_POST['hide_title_meta_box_nonce']) ||
-                !wp_verify_nonce($_POST['hide_title_meta_box_nonce'], plugin_basename(__FILE__))
-        ) {
-            return;
-        }
+        get_template_part($template_path);
 
-        /*
-         * If this is an autosave, our form has not been submitted,
-         * so we don't want to do anything.
-         */
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-            return $post_id;
-        }
+        $pattern_content = ob_get_contents();
 
+        ob_end_clean();
 
-        // Sanitize the user input.
-        $mydata = sanitize_text_field($_POST['advacnetheme_hide_title_field']);
-
-        // Update the meta field.
-        update_post_meta($post_id, '_hide_page_title', $mydata);
+        return $pattern_content;
     }
 
 }
