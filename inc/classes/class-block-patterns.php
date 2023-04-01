@@ -44,21 +44,50 @@ class Block_Patterns {
     public function setup_hooks() {
         //Setup hooks
         add_action('init', array($this, 'register_block_pattern'));
-        add_action('init', array($this, 'get_pattern_content'));
+        add_action('init', array($this, 'register_block_pattern_categories'));
     }
 
     public function register_block_pattern() {
         if (function_exists('register_block_pattern')) {
             $cover_content = $this->get_pattern_content('template-parts/patterns/cover');
+            $two_column_content = $this->get_pattern_content('template-parts/patterns/two-columns');
 
             register_block_pattern(
-                    'advance-theme/cover',
-                    [
-                        'title' => __('Advance Theme Cover Block', 'advance-theme'),
-                        'description' => __('Advance theme cover block with image and text', 'advacne-theme'),
-                        'content' => $cover_content
-                    ]
+                'advance-theme/cover',
+                [
+                    'title' => __('Advance Theme Cover Block', 'advance-theme'),
+                    'description' => __('Advance theme cover block with image and text', 'advacne-theme'),
+                    'categories' => ['cover'],
+                    'content' => $cover_content
+                ]
             );
+            
+             register_block_pattern(
+                'advance-theme/two-columns',
+                [
+                    'title' => __('Advance Theme Two Column Block', 'advance-theme'),
+                    'description' => __('Advance theme two column block with heading and text', 'advacne-theme'),
+                    'categories' => ['two_columns'],
+                    'content' => $two_column_content
+                ]
+            );
+        }
+    }
+
+    public function register_block_pattern_categories() {
+
+        $pattern_categories = [
+            'cover' => __('Cover', 'advance-theme'),
+            'two_columns' => __('Two Columns', 'advance-theme'),
+        ];
+
+        if (!empty($pattern_categories) && is_array($pattern_categories)) {
+            foreach ($pattern_categories as $pattern_category => $pattern_category_key) {
+                register_block_pattern_category(
+                        $pattern_category,
+                        ['label' => $pattern_category_key]
+                );
+            }
         }
     }
 
