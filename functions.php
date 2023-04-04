@@ -25,7 +25,7 @@ if (!defined('ADVANCE_THEME_BUILD_DIR_JS_PATH')) {
 }
 
 if (!defined('ADVANCE_BUILD_IMG_DIR_URI')) {
-    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/img'));
+    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/src/img'));
 }
 
 if (!defined('ADVANCE_THEME_BUILD_DIR_CSS_PATH')) {
