@@ -29,6 +29,7 @@ get_header();
                         </div>
                         <?php
                     endwhile;
+                    advance_theme_pagination();
                     ?>
                 </div>
             </div>

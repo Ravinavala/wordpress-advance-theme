@@ -8,8 +8,7 @@ function get_the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $
     }
 
     if (has_post_thumbnail($post_id)) {
-
-
+        
         $custom_thumbnail = wp_get_attachment_image(
                 get_post_thumbnail_id($post_id),
                 $size,
@@ -57,6 +56,48 @@ function advance_theme_posted_by() {
             esc_html_x(' by %s', 'post author', 'advance-theme'),
             '<span class="author vcard"><a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
     );
-
     echo '<span class="byline text-secondary">' . $byline . '</span>';
+}
+
+function advance_theme_the_excerpt($trim_char_count = 0) {
+    if ( ! has_excerpt() || 0 === $trim_char_count ) {
+        the_excerpt();
+        return;
+    }
+   
+    $excerpt = wp_strip_all_tags(get_the_excerpt());
+    $excerpt = substr($excerpt, 0, $trim_char_count);
+    //Trucate character after space to avoid work break
+    $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
+    
+    echo $excerpt . '[...]';
+}
+
+function advance_theme_read_more($read_more = ""){
+    if(!is_single()) {
+        $read_more = sprintf('<button class="mt-4 btn btn-info"> <a href="%1$s" class="atheme-read-more text-white">%2$s</a> </button>',
+        get_permalink(get_the_ID()),
+        __('Read More', 'advance-theme'),
+        );
+    }
+    return $read_more;
+}
+
+function advance_theme_pagination() {
+    $allowed_tags = [
+        'span' => [
+            'class' => []
+        ],
+        'a' => [
+            'class' => [],
+            'href' => [],
+        ]
+    ];
+
+    $args = [
+        'before_page_number' => '<span class="btn border border-secondary mr-2 mb-2">',
+        'after_page_number' => '</span>',
+    ];
+
+    printf('<nav class="aquila-pagination clearfix">%s</nav>', wp_kses(paginate_links($args), $allowed_tags));
 }
