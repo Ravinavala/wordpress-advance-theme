@@ -25,7 +25,7 @@ if (!defined('ADVANCE_THEME_BUILD_DIR_JS_PATH')) {
 }
 
 if (!defined('ADVANCE_BUILD_IMG_DIR_URI')) {
-    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/img'));
+    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/src/img'));
 }
 
 if (!defined('ADVANCE_THEME_BUILD_DIR_CSS_PATH')) {
@@ -33,7 +33,7 @@ if (!defined('ADVANCE_THEME_BUILD_DIR_CSS_PATH')) {
 }
 
 if (!defined('ADVANCE_BUILD_CSS_DIR_URI')) {
-    define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/build/css'));
+    define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/css'));
 }
 
 require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/autoloader.php';
