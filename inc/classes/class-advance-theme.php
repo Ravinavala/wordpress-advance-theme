@@ -23,6 +23,7 @@ class ADVANCE_THEME {
         Sidebars::get_instance();
         Clock_Widget::get_instance();
         Block_Patterns::get_instance();
+        Register_Post_Types::get_instance();
         Register_Taxonomies::get_instance();
         $this->setup_hooks();
     }
