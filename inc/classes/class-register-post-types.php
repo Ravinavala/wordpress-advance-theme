@@ -64,7 +64,7 @@ class Register_Post_Types {
             'label' => __('Book', 'advance-theme'),
             'description' => __('The Books', 'advance-theme'),
             'labels' => $labels,
-            'menu_icon' => 'dashicons-video-alt',
+            'menu_icon' => 'dashicons-book-alt',
             'supports' => [
                 'title',
                 'editor',

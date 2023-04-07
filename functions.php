@@ -36,6 +36,14 @@ if (!defined('ADVANCE_BUILD_CSS_DIR_URI')) {
     define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/css'));
 }
 
+if ( ! defined( 'ADVANCE_THEME_ARCHIVE_POST_PER_PAGE' ) ) {
+    define( 'ADVANCE_THEME_ARCHIVE_POST_PER_PAGE', 9 );
+}
+
+if ( ! defined( 'ADVANCE_THEME_SEARCH_RESULTS_POST_PER_PAGE' ) ) {
+    define( 'ADVANCE_THEME_SEARCH_RESULTS_POST_PER_PAGE', 9 );
+}
+
 require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/autoloader.php';
 
 require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/template-tag.php';
