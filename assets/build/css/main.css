@@ -508,14 +508,14 @@ body.mce-content-body {
   margin: 15px;
 }
 
-blockquote, q {
+blockquote.wp-block-quote, q {
   quotes: "" "";
   border-left: 4px solid #eeeeee;
   font-style: italic;
   margin: 0 0 30px 30px;
   padding-left: 16px;
 }
-blockquote::before, blockquote::after, q::before, q::after {
+blockquote.wp-block-quote::before, blockquote.wp-block-quote::after, q::before, q::after {
   content: "";
 }
 
@@ -601,7 +601,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*---------------------------
-		Lists
+                Lists
 ---------------------------*/
 ul,
 ol {
@@ -837,6 +837,63 @@ object {
 /*---------------------------
       Icons
 ---------------------------*/
+.home-page-wrap .entry-content > * {
+  margin: 60px auto 60px auto;
+}
+.home-page-wrap .entry-content > *:not(.alignfull) {
+  max-width: 1140px;
+  padding: 0 15px 0 15px;
+}
+.home-page-wrap .entry-content > .alignwide {
+  max-width: 1240px;
+}
+
+.slick-slide:focus {
+  outline: none;
+}
+
+.slick-slider {
+  margin: 0 -15px;
+}
+
+.slick-slide {
+  padding: 10px;
+  text-align: center;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.slick-prev:before {
+  content: "<";
+  color: red;
+  font-size: 30px;
+}
+
+.slick-next:before {
+  content: ">";
+  color: red;
+  font-size: 30px;
+}
+
+@media (min-width: 48em) {
+  .search-card-container {
+    display: flex;
+  }
+}
+.search-card-container .search-card-content {
+  margin-top: 16px;
+}
+@media (min-width: 48em) {
+  .search-card-container .search-card-content {
+    margin-top: 0;
+  }
+}
+@media (min-width: 48em) {
+  .search-card-container .search-card-thumbnail {
+    margin-right: 16px;
+  }
+}
+
 /* Entry meta */
 .updated:not(.published) {
   display: none;

@@ -25,15 +25,27 @@ if (!defined('ADVANCE_THEME_BUILD_DIR_JS_PATH')) {
 }
 
 if (!defined('ADVANCE_BUILD_IMG_DIR_URI')) {
-    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/img'));
+    define('ADVANCE_BUILD_IMG_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/src/img'));
 }
 
 if (!defined('ADVANCE_THEME_BUILD_DIR_CSS_PATH')) {
     define('ADVANCE_THEME_BUILD_DIR_CSS_PATH', untrailingslashit(get_template_directory().'/assets/build/css'));
 }
 
+if (!defined('ADVANCE_THEME_BUILD_LIBRARY_URI')) {
+    define('ADVANCE_THEME_BUILD_LIBRARY_URI', untrailingslashit(get_template_directory_uri().'/assets/build/library'));
+}
+
 if (!defined('ADVANCE_BUILD_CSS_DIR_URI')) {
-    define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/build/css'));
+    define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/css'));
+}
+
+if ( ! defined( 'ADVANCE_THEME_ARCHIVE_POST_PER_PAGE' ) ) {
+    define( 'ADVANCE_THEME_ARCHIVE_POST_PER_PAGE', 9 );
+}
+
+if ( ! defined( 'ADVANCE_THEME_SEARCH_RESULTS_POST_PER_PAGE' ) ) {
+    define( 'ADVANCE_THEME_SEARCH_RESULTS_POST_PER_PAGE', 9 );
 }
 
 require_once ADVANCE_THEME_DIR_PATH . '/inc/helpers/autoloader.php';
