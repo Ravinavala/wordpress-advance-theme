@@ -32,6 +32,10 @@ if (!defined('ADVANCE_THEME_BUILD_DIR_CSS_PATH')) {
     define('ADVANCE_THEME_BUILD_DIR_CSS_PATH', untrailingslashit(get_template_directory().'/assets/build/css'));
 }
 
+if (!defined('ADVANCE_THEME_BUILD_LIBRARY_URI')) {
+    define('ADVANCE_THEME_BUILD_LIBRARY_URI', untrailingslashit(get_template_directory_uri().'/assets/build/library'));
+}
+
 if (!defined('ADVANCE_BUILD_CSS_DIR_URI')) {
     define('ADVANCE_BUILD_CSS_DIR_URI', untrailingslashit(get_template_directory_uri().'/assets/build/css'));
 }

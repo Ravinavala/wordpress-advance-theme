@@ -1,4 +1,5 @@
 import './clock';
+import "./carousel/";
 
 // Styles
 import '../sass/main.scss';
@@ -7,4 +8,5 @@ import '../sass/main.scss';
 import '../img/table-lamp.jpg';
 
 import '../img/block_pattern/cover.jpg';
+
 
