@@ -51,7 +51,7 @@
 </div>
 </div>
 <?php
-    get_template_part('template-parts/content', 'svgs');
+    get_template_part('template-parts/svg/content', 'svgs');
     wp_footer();
 ?>
 </body>

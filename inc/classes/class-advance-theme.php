@@ -26,6 +26,7 @@ class ADVANCE_THEME {
         Register_Post_Types::get_instance();
         Register_Taxonomies::get_instance();
         Archive_Settings::get_instance();
+        Load_More_Posts::get_instance();
         $this->setup_hooks();
     }
 
