@@ -91,10 +91,14 @@
                     ajax_nonce: this.ajaxNonce,
                 },
                 success: (response) => {
+                   
                     this.loadMoreBtn.data('page', nextPage);
                     $('#load-more-content').append(response);
                     this.removeLoadMoreIfOnLastPage(nextPage);
                     this.isRequestProcessing = false;
+                    if(response === '0'){
+                        this.loadMoreBtn.remove();
+                    }
                 },
                 error: (response) => {
                     console.log(response);

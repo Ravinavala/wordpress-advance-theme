@@ -116,8 +116,8 @@ class Load_More_Posts {
                 ?>
             </div>
             <button id="load-more" data-page="1" class="load-more-btn my-4 d-flex flex-column mx-auto px-4 py-2 border-0 bg-transparent">
-                <span><?php esc_html_e('Loading...', 'text-domain'); ?></span>
-                <?php get_template_part('template-parts/svgs/loading'); ?>
+                <span><?php esc_html_e('Loading...', 'advance-theme'); ?></span>
+                <?php get_template_part('template-parts/svg/loading'); ?>
             </button>
         </div>
         <?php

@@ -1,6 +1,6 @@
 import './clock';
 import "./carousel/";
-
+import "./loadMore.js"
 // Styles
 import '../sass/main.scss';
 
